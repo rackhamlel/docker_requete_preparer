@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Nom du container principal
+CONTAINER_NAME="Docker Injection SQL et Requetes Preparées"
+
+# Nettoyage de l'écran
+clear
+
+# Echo with figlet if exists
+if type "figlet" > /dev/null; then
+  figlet $CONTAINER_NAME
+else
+  echo $CONTAINER_NAME
+fi
+
+echo "Démarrage de tous les containers"
+# Commande de lancement
+docker-compose up -d

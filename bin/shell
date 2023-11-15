@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+if [ -z "$1" ]
+  then
+    docker exec -it mysql-vulnerable bash
+else
+    docker exec -it $@ bash
+fi

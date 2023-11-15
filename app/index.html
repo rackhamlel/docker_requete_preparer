@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cours Requêtes préparées</title>
+    <meta charset="utf-8">
+</head>
+<body>
+
+    <h1>Bases de données MySQL</h1>
+
+    <form action="insert.php" method="post" class="NouveauClient">
+
+        <label for="nom">nom:</label><br>
+        <input type="text" id="nom" name="nom" required><br><br>
+
+        <label for="prenom">prénom:</label><br>
+        <input type="text" id="prenom" name="prenom" required><br><br>
+
+        <label for="adresse">adresse:</label><br>
+        <input type="text" id="adresse" name="adresse" required><br><br>
+
+        <label for="ville">ville:</label><br>
+        <input type="text" id="ville" name="ville" required><br><br>
+
+        <label for="cp">cp:</label><br>
+        <input type="text" id="cp" name="cp" required><br><br>
+
+        <label for="pays">pays:</label><br>
+        <input type="text" id="pays" name="pays" required><br><br>
+
+        <label for="mail">mail:</label><br>
+        <input type="text" id="mail" name="mail" required><br><br>
+
+        <input type="submit" value="Envoyer">
+    </form> 
+
+    <br>
+
+    <form action="AfficherTousLesClient.php" method="post" class="AfficherTousLesClient">
+        <input type="submit" value="Afficher Tous Les Client">
+    </form>
+
+
+</body>
+</html>

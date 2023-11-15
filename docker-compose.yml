@@ -1,0 +1,53 @@
+version: '3.3'
+
+services:
+  mysql-vulnerable:
+    image: 'mariadb:10.7'
+    container_name: mysql-vulnerable
+    volumes:
+      - ./:/docker-entrypoint-initdb.d
+    environment:
+      - MARIADB_ROOT_PASSWORD=toor
+      - MARIADB_DATABASE=pdodb
+      - MARIADB_USER=pdodb
+      - MARIADB_PASSWORD=pdodb
+    restart: always
+    ports:
+      - "8082:3306"
+    networks:
+      - -sql_injection
+
+  website:
+    container_name: website-vulnerable
+    build:
+      context: ./
+    volumes:
+      - ./app:/var/www/html/
+    ports:
+      - 8000:80
+    depends_on:
+      - mysql-vulnerable
+    networks:
+      - -sql_injection
+
+
+  # PHPMyAdmin
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: sql_injection_phpmyadmin
+    restart: always
+    environment:
+      - PMA_HOST=mysql-vulnerable
+      - PMA_PORT=3306
+      - PMA_USER=pdodb
+      - PMA_PASSWORD=pdodb
+    ports:
+      - 8081:80
+    depends_on:
+      - mysql-vulnerable
+    networks:
+      - -sql_injection
+
+networks:
+  -sql_injection:
+    driver: bridge
